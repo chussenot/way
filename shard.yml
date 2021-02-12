@@ -1,0 +1,19 @@
+---
+name: way
+version: 0.1.0
+
+authors:
+  - your-name-here <your-email-here>
+
+targets:
+  way:
+    main: src/way.cr
+
+crystal: 0.35.1
+
+license: MIT
+
+dependencies:
+  toml:
+    github: crystal-community/toml.cr
+    branch: master
