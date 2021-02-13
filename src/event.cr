@@ -23,28 +23,10 @@ abstract class Event
 
   def call(msg : String, severity : LogLevel)
     if @log_levels.includes?(LogLevel::All) || @log_levels.includes?(severity)
-      write_message(msg)
+      execute(msg)
     end
     @next.try(&.call(msg, severity))
   end
 
-  abstract def write_message(msg : String)
-end
-
-class Source < Event
-  def write_message(msg : String)
-    puts "Writing to console: #{msg}"
-  end
-end
-
-class Transform < Event
-  def write_message(msg : String)
-    puts "Sending via email: #{msg}"
-  end
-end
-
-class Sink < Event
-  def write_message(msg : String)
-    puts "Writing to Log File: #{msg}"
-  end
+  abstract def execute(msg : String)
 end

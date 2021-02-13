@@ -22,7 +22,7 @@ describe Way do
     # Build the chain of responsibility
     event = Source.new(LogLevel::All)
     event1 = event.next = Transform.new(LogLevel::FunctionalMessage, LogLevel::FunctionalError)
-    event2 = event1.next = Sink.new(LogLevel::Warning, LogLevel::Error)
+    event2 = event1.next = Blackhole.new(LogLevel::Warning, LogLevel::Error)
 
     # Calls
     event.call("Entering function ProcessOrder().", LogLevel::Debug)
