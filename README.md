@@ -25,3 +25,8 @@ TODO: Write development instructions here
 ## Contributors
 
 - [your-name-here](https://github.com/your-github-user) - creator and maintainer
+
+## Resources
+
+- [Vector](https://github.com/timberio/vector/blob/master/src/sinks/blackhole.rs)
+- [Chain of responsability](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern)

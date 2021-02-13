@@ -3,3 +3,7 @@ module Way
 end
 
 require "toml"
+require "./event"
+require "./sources/*"
+require "./transforms/*"
+require "./sinks/*"

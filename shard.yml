@@ -17,3 +17,7 @@ dependencies:
   toml:
     github: crystal-community/toml.cr
     branch: master
+  debug:
+    github: Sija/debug.cr
+  syslog:
+    github: chris-huxtable/syslog.cr

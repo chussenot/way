@@ -1,5 +1,13 @@
 version: 2.0
 shards:
+  debug:
+    git: https://github.com/Sija/debug.cr.git
+    version: 2.0.0
+
+  syslog:
+    git: https://github.com/chris-huxtable/syslog.cr.git
+    version: 0.1.2
+
   toml:
     git: https://github.com/crystal-community/toml.cr.git
     version: 0.7.0+git.commit.7852db986976679bd39a8b3b3172cae5a8c6a2b3
