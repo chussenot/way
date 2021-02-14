@@ -32,4 +32,45 @@ describe Way do
     event.call("Unable to Process Order ORD1 Dated D1 For Customer C1.", LogLevel::FunctionalError)
     event.call("Order Dispatched.", LogLevel::FunctionalMessage)
   end
+
+  it "read and build" do
+    toml_string = %(
+      # API (disabled by default)
+      [api]
+      enabled = false
+
+      [sources.foo]
+      type = "source"
+
+      # Print it all out for inspection
+      [sinks.print]
+      type = "console"
+      inputs = ["foo"]
+
+      )
+    toml = TOML.parse(toml_string).select!(
+      "api",
+      "sources",
+      "sinks",
+      "transforms"
+    )
+    api = toml["api"].as(Hash)
+    api["enabled"].should eq(false)
+
+    sources = toml["sources"].as(Hash)
+    sinks = toml["sinks"].as(Hash)
+
+    sources.each do |k, v|
+      puts v
+    end
+
+    if sinks
+      s = sinks["print"].as(Hash)
+      inputs = s["inputs"].as(Array)
+      source = sources[inputs.pop].as(Hash)
+      _type = source["type"].as(String).camelcase
+      puts _type
+    else
+    end
+  end
 end
