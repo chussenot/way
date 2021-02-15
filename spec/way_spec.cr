@@ -20,17 +20,17 @@ describe Way do
   it "run events in a chain" do
     # Program
     # Build the chain of responsibility
-    event = Source.new(LogLevel::All)
-    event1 = event.next = Transform.new(LogLevel::FunctionalMessage, LogLevel::FunctionalError)
-    event2 = event1.next = Blackhole.new(LogLevel::Warning, LogLevel::Error)
+    event = Way::Source.new(Way::LogLevel::All)
+    event1 = event.next = Way::Transform.new(Way::LogLevel::FunctionalMessage, Way::LogLevel::FunctionalError)
+    event2 = event1.next = Way::Blackhole.new(Way::LogLevel::Warning, Way::LogLevel::Error)
 
     # Calls
-    event.call("Entering function ProcessOrder().", LogLevel::Debug)
-    event.call("Order record retrieved.", LogLevel::Info)
-    event.call("Customer Address details missing in Branch DataBase.", LogLevel::Warning)
-    event.call("Customer Address details missing in Organization DataBase.", LogLevel::Error)
-    event.call("Unable to Process Order ORD1 Dated D1 For Customer C1.", LogLevel::FunctionalError)
-    event.call("Order Dispatched.", LogLevel::FunctionalMessage)
+    event.call("Entering function ProcessOrder().", Way::LogLevel::Debug)
+    event.call("Order record retrieved.", Way::LogLevel::Info)
+    event.call("Customer Address details missing in Branch DataBase.", Way::LogLevel::Warning)
+    event.call("Customer Address details missing in Organization DataBase.", Way::LogLevel::Error)
+    event.call("Unable to Process Order ORD1 Dated D1 For Customer C1.", Way::LogLevel::FunctionalError)
+    event.call("Order Dispatched.", Way::LogLevel::FunctionalMessage)
   end
 
   it "read and build" do
